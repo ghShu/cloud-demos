@@ -14,7 +14,7 @@
 
 # Architecture
 
-![img](./images/ads-architecture.png "Architecture for a simple Ads upload backend using native AWS services")   
+![img](../demo-architecture.png "Architecture for a simple Ads upload backend using native AWS services")   
 
 
 <a id="orgceb377f"></a>
