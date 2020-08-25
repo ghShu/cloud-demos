@@ -1,0 +1,49 @@
+# -*- mode: org -*-
+# -*- coding: utf-8 -*-
+#+startup: hidestars indent showall fold
+#+latex_class: article
+#+latex_class_name: ctexart
+
+#+title: Ads-AWS is a simple demo for cloud native development in AWS
+#+setupfile: https://github.com/fniessen/org-html-themes/blob/master/setup/theme-readtheorg.setup
+
+#+author: Guanghua Shu
+#+email: (concat "guanghuashu" at-sign "gmail.com")
+#+date:  2019-02-26
+#+language:  en
+#+options:   H:5 num:nil toc:3
+
+
+* Architecture
+
+#+caption: Architecture for a simple Ads upload backend using native AWS services
+#+attr_org: :width 180
+[[file:./images/ads-architecture.png]]   
+
+** Used AWS Service:
+- EC2
+- S3
+- RDS: MySQL
+- Docker
+- EKS
+
+* Run the Ads-AWS
+** Setup AWS environment
+   - ~mkdir ~/.config~    # save ssh key for log into EC2 vms
+   - ~mkdir ~/.aws~       # save aws related credentials into a file call ~credentials~.
+
+** Run the Ads server w/o docker
+   - run ~./sync.sh~ to transfer the code into EC2 VM  (Remember to update the machine IP)
+   - ~./connect.sh  vm_name~
+   - ~./run_server.sh~
+   - access the service in browser: ~ip:8080~
+
+** Run the Ads server w/ docker
+   - run ~./sync.sh~ to transfer the code into EC2 VM  (Remember to update the machine IP)
+   - ~./connect.sh  vm_name~
+   - In host VM: ~./docker_run.sh KEY_ID  KEY~
+   - In any browser: ~ip:8080~
+
+** Publish your docker images (local or one EC2 VM)
+   - Build image: ~./docker_build.sh~
+   - publish the docker image to DockerHub: ~./docker_publish.sh~
